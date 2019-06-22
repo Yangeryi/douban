@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>echarts</title>
+    <script src="./js/echarts.min.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./js/data.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .echarts{
+            width: 420px;
+            height: 350px;
+            border: 1px solid #000000;
+            margin: 20px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="echarts"></div>
+    <div class="echarts"></div>
+    <div class="echarts"></div>
+    <div class="echarts"></div>
+
+    <script>
+        let main=document.querySelectorAll(".echarts");
+        let mycharts=echarts.init(main[3]);
+        let options={
+            backgroundColor: '#2c343c',
+            title: {
+                text: 'Customized Pie',
+                left: 'center',
+                top: 20,
+                textStyle: {
+                    color: '#ccc'
+                }
+            },
+            series: [
+                {
+                    name:'电影类型',
+                    type:'pie',
+                    data:[]
+                }
+            ]
+        }
+        let arr=[];
+        for(let i=0;i<categories.length;i++){
+            if (i==0){
+                continue;
+            }
+            let name =categories[i];
+            let value =data.filter(ele=>ele[4].includes(name)).length;
+            arr.push({name,value})
+        }
+
+        options.series[0].date=arr;
+        mycharts.setOption(options)
+    </script>
+</body>
+</html>
